@@ -1,3 +1,183 @@
 <resources>
     <string name="app_name">AILab2</string>
+    <string-array name="class_names">
+        <item>E</item>
+        <item>Э</item>
+        <item>+</item>
+    </string-array>
+    <array name="figures_list">
+        <item>@array/class_one_matrices</item>
+        <item>@array/class_two_matrices</item>
+        <item>@array/class_three_matrices</item>
+    </array>
+    <string-array name="class_one_matrices">
+        <item>E</item>
+        <item>
+            0 0 1 1 1 1
+            0 0 1 0 0 0
+            0 0 1 1 1 1
+            0 0 1 0 0 0
+            0 0 1 1 1 1
+            0 0 0 0 0 0
+        </item>
+        <item>
+            0 0 1 1 1 0
+            0 0 1 0 0 0
+            0 0 1 1 1 0
+            0 0 1 0 0 0
+            0 0 1 1 1 0
+            0 0 0 0 0 0
+        </item>
+        <item>
+            0 1 1 1 1 0
+            0 1 0 0 0 0
+            0 1 1 1 1 0
+            0 1 0 0 0 0
+            0 1 1 1 1 0
+            0 0 0 0 0 0
+        </item>
+        <item>
+            0 1 1 1 0 0
+            0 1 0 0 0 0
+            0 1 1 1 0 0
+            0 1 0 0 0 0
+            0 1 1 1 0 0
+            0 0 0 0 0 0
+        </item>
+        <item>
+            0 1 1 1 1 1
+            0 1 0 0 0 0
+            0 1 1 1 0 0
+            0 1 0 0 0 0
+            0 1 1 1 1 1
+            0 0 0 0 0 0
+        </item>
+         <item>
+            0 1 1 1 1 1
+            0 1 0 0 0 0
+            0 1 1 1 1 0
+            0 1 0 0 0 0
+            0 1 1 1 1 1
+            0 0 0 0 0 0
+        </item>
+
+                 <item>
+                    0 0 0 0 0 0
+                    0 1 1 1 1 0
+                    0 1 0 0 0 0
+                    0 1 1 1 1 0
+                    0 1 0 0 0 0
+                    0 1 1 1 1 0
+                </item>
+                <item>
+                    1 1 1 0 0 0
+                    1 0 0 0 0 0
+                    1 1 1 0 0 0
+                    1 0 0 0 0 0
+                    1 1 1 0 0 0
+                    0 0 0 0 0 0
+                </item>
+          <item>
+              1 1 1 1 0 0
+              1 0 0 0 0 0
+              1 1 1 1 0 0
+              1 0 0 0 0 0
+              1 1 1 1 0 0
+              0 0 0 0 0 0
+          </item>
+           <item>
+              1 1 1 1 1 0
+              1 0 0 0 0 0
+              1 1 1 1 1 0
+              1 0 0 0 0 0
+              1 1 1 1 1 0
+              0 0 0 0 0 0
+          </item>
+         <item>
+            1 1 1 1 1 1
+            1 0 0 0 0 0
+            1 1 1 1 1 1
+            1 0 0 0 0 0
+            1 0 0 0 0 0
+            1 1 1 1 1 1
+        </item>
+    </string-array>
+    <string-array name="class_two_matrices">
+        <item>Э</item>
+        <item>
+            0 1 1 1 0 0
+            0 0 0 0 1 0
+            0 1 1 1 1 0
+            0 0 0 0 1 0
+            0 1 1 1 0 0
+            0 0 0 0 0 0
+        </item>
+        <item>
+            1 1 0 0 0 0
+            0 0 1 0 0 0
+            1 1 1 0 0 0
+            0 0 1 0 0 0
+            1 1 0 0 0 0
+            0 0 0 0 0 0
+        </item>
+         <item>
+            1 1 1 0 0 0
+            0 0 0 1 0 0
+            1 1 1 1 0 0
+            0 0 0 1 0 0
+            0 0 0 1 0 0
+            1 1 1 0 0 0
+        </item>
+         <item>
+            1 1 1 1 0 0
+            0 0 0 0 1 0
+            1 1 1 1 1 0
+            0 0 0 0 1 0
+            0 0 0 1 0 0
+            1 1 1 0 0 0
+        </item>
+        <item>
+            1 1 1 1 1 0
+            0 0 0 0 0 1
+            1 1 1 1 1 1
+            0 0 0 0 0 1
+            0 0 0 0 0 1
+            1 1 1 1 1 0
+        </item>
+    </string-array>
+    <string-array name="class_three_matrices">
+        <item>+</item>
+        <item>
+            0 0 1 0 0 0
+            0 0 1 0 0 0
+            1 1 1 1 1 0
+            0 0 1 0 0 0
+            0 0 1 0 0 0
+            0 0 0 0 0 0
+        </item>
+        <item>
+            0 0 0 0 0 0
+            0 0 1 0 0 0
+            0 1 1 1 0 0
+            0 0 1 0 0 0
+            0 0 0 0 0 0
+            0 0 0 0 0 0
+        </item>
+         <item>
+            0 0 1 0 0 0
+            0 0 1 0 0 0
+            1 1 1 1 1 1
+            0 0 1 0 0 0
+            0 0 1 0 0 0
+            0 0 1 0 0 0
+        </item>
+         <item>
+            0 0 0 0 1 0
+            0 0 0 0 1 0
+            0 0 0 1 1 1
+            0 0 0 0 1 0
+            0 0 0 0 1 0
+            0 0 0 0 0 0
+        </item>
+    </string-array>
 </resources>
