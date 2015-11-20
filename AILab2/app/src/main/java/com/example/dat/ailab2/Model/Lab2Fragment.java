@@ -1,15 +1,20 @@
-package com.example.dat.ailab2;
+package com.example.dat.ailab2.Model;
 
 import android.content.res.TypedArray;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.dat.ailab2.Model.Figure;
-import com.example.dat.ailab2.Model.Kinside;
+import com.example.dat.ailab2.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +25,12 @@ import butterknife.InjectView;
 import butterknife.InjectViews;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by DAT on 11/21/2015.
+ */
+public class Lab2Fragment extends Fragment {
+
+
     @InjectViews({R.id.cb1, R.id.cb2, R.id.cb3, R.id.cb4, R.id.cb5, R.id.cb6
             , R.id.cb7, R.id.cb8, R.id.cb9, R.id.cb10, R.id.cb11, R.id.cb12
             , R.id.cb13, R.id.cb14, R.id.cb15, R.id.cb16, R.id.cb17, R.id.cb18
@@ -41,12 +51,17 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewResult;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Lab 2");
+    }
 
-
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_lab2, container, false);
+        ButterKnife.inject(this, view);
+        return view;
     }
 
     @OnClick(R.id.buttonCheck)
@@ -277,13 +292,6 @@ public class MainActivity extends AppCompatActivity {
     private String[] getClassNames() {
         String[] names = getResources().getStringArray(R.array.class_names);
         return names;
-    }
-
-    private void lab3Initilize() {
-
-        Kinside kinside = new Kinside(vectorTo2DArray());
-        kinside.firstStep();
-
     }
 
 }

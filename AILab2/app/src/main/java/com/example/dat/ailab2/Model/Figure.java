@@ -37,6 +37,20 @@ public class Figure {
         return vect;
     }
 
+    public double[] getVectDouble() {
+        double[] vectDouble = new double[this.vect.length];
+        for (int i = 0; i < this.vect.length; i++) {
+            if(this.vect[i]==true){
+                vectDouble[i] = 1;
+            }
+            else {
+                vectDouble[i] = 0;
+            }
+        }
+        return vectDouble;
+    }
+
+
     public void setVect(boolean[] vect) {
         this.vect = vect;
     }

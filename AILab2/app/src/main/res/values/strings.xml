@@ -144,6 +144,30 @@
             0 0 0 0 0 1
             1 1 1 1 1 0
         </item>
+        <item>
+            0 1 1 1 0 0
+            0 0 0 0 1 0
+            0 1 1 1 1 0
+            0 0 0 0 1 0
+            0 0 0 0 1 0
+            0 1 1 1 0 0
+        </item>
+         <item>
+            0 0 1 1 0 0
+            0 0 0 0 1 0
+            0 0 1 1 1 0
+            0 0 0 0 1 0
+            0 0 0 0 1 0
+            0 0 1 1 0 0
+        </item>
+         <item>
+            0 0 1 1 0 0
+            0 0 0 0 1 0
+            0 0 1 1 1 0
+            0 0 0 0 1 0
+            0 0 1 1 0 0
+            0 0 0 0 0 0
+        </item>
     </string-array>
     <string-array name="class_three_matrices">
         <item>+</item>
@@ -179,5 +203,33 @@
             0 0 0 0 1 0
             0 0 0 0 0 0
         </item>
+        <item>
+            0 0 1 0 0 0
+            0 0 1 0 0 0
+            0 1 1 1 1 0
+            0 0 1 0 0 0
+            0 0 1 0 0 0
+            0 0 0 0 0 0
+        </item>
+         <item>
+            0 0 0 0 0 0
+            0 0 0 0 1 0
+            0 0 0 1 1 1
+            0 0 0 0 1 0
+            0 0 0 0 0 0
+            0 0 0 0 0 0
+        </item>
+    </string-array>
+    <string name="title_activity_nav">NavActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string-array name="clusters">
+        <item>Cluster 1</item>
+        <item>Cluster 2</item>
+        <item>Cluster 3</item>
     </string-array>
 </resources>
