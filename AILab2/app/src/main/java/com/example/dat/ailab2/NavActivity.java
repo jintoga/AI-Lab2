@@ -12,8 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.dat.ailab2.Model.Lab2Fragment;
-import com.example.dat.ailab2.Model.Lab3Fragment;
+import com.example.dat.ailab2.ui.Lab2Fragment;
+import com.example.dat.ailab2.ui.Lab3Fragment;
+import com.example.dat.ailab2.ui.Lab4Fragment;
 
 public class NavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -71,14 +72,16 @@ public class NavActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
         Fragment fragment;
         if (id == R.id.item_navDrawer_lab2) {
-            // Handle the camera action
+
             fragment = new Lab2Fragment();
-        } else {
+        } else if (id == R.id.item_navDrawer_lab3) {
             fragment = new Lab3Fragment();
+        } else {
+            fragment = new Lab4Fragment();
         }
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content, fragment);

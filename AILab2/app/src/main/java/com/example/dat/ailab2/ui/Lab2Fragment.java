@@ -1,10 +1,10 @@
-package com.example.dat.ailab2.Model;
+package com.example.dat.ailab2.ui;
 
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.example.dat.ailab2.Model.Figure;
 import com.example.dat.ailab2.R;
 
 import java.util.ArrayList;
@@ -24,13 +24,12 @@ import java.util.Random;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.InjectViews;
-import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 /**
  * Created by DAT on 11/21/2015.
  */
-public class Lab3Fragment extends Fragment {
+public class Lab2Fragment extends Fragment {
 
 
     @InjectViews({R.id.cb1, R.id.cb2, R.id.cb3, R.id.cb4, R.id.cb5, R.id.cb6
@@ -49,49 +48,22 @@ public class Lab3Fragment extends Fragment {
     String[] ch_class;
     @InjectView(R.id.buttonCheck)
     Button buttonCheck;
-    @InjectView(R.id.radioGroupMethods)
-    RadioGroup radioGroupMethods;
-
-    @InjectView(R.id.spinnerClusters)
-    Spinner spinnerClusters;
-
-    CheckBox[][] matrixOfCheckBoxes;
+    @InjectView(R.id.textViewResult)
+    TextView textViewResult;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Lab 3");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Lab 2");
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_lab3, container, false);
+        View view = inflater.inflate(R.layout.fragment_lab2, container, false);
         ButterKnife.inject(this, view);
-        disableCheckBoxes();
-        radioGroupMethods.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                for (CheckBox checkBox : checkBoxes) {
-                    checkBox.setBackgroundColor(getResources().getColor(android.R.color.white));
-                }
-            }
-        });
         return view;
     }
-
-    private void disableCheckBoxes() {
-        for (CheckBox checkBox : checkBoxes) {
-            checkBox.setEnabled(false);
-        }
-    }
-
-   /* @OnCheckedChanged(R.id.radioGroupMethods)
-    protected void checkChanged() {
-        for (CheckBox checkBox : checkBoxes) {
-            checkBox.setBackgroundColor(getResources().getColor(android.R.color.white));
-        }
-    }*/
 
     @OnClick(R.id.buttonCheck)
     protected void check() {
@@ -106,7 +78,7 @@ public class Lab3Fragment extends Fragment {
         //Toast.makeText(this, checked, Toast.LENGTH_SHORT).show();
 
         if (initialize()) {
-            lab3Initilize();
+            checkResult();
         }
 
         //clearStuff();
@@ -118,6 +90,31 @@ public class Lab3Fragment extends Fragment {
         }
     }
 
+    private void checkResult() {
+        boolean[] vec = getUserVec();
+        Figure userObr = new Figure(vec, -1);
+
+        double[] pot = new double[Q];
+
+        for (int j = 0; j < Q; j++) {
+            pot[j] = getPot(userObr, j);      // j - текущий класс
+        }
+
+        double maxValue = getMaxDouble(pot);
+        int m = toList(pot).indexOf(maxValue);     ///класс получился
+
+       /* Toast.makeText(this, "Это символ " + ch_class[m]
+                + "\n\nПотенциалы:\nКласс " + ch_class[0] + " = " + pot[0]
+                + "\nКласс " + ch_class[1] + " = " + pot[1]
+                + "\nКласс " + ch_class[2] + " = " + pot[2]
+                , Toast.LENGTH_LONG).show();*/
+        textViewResult.setText("Это символ " + ch_class[m]
+                        + "\n\nПотенциалы:\nКласс " + ch_class[0] + " = " + pot[0]
+                        + "\nКласс " + ch_class[1] + " = " + pot[1]
+                        + "\nКласс " + ch_class[2] + " = " + pot[2]
+        );
+
+    }
 
     private boolean[] getUserVec() {
         boolean[] vec = new boolean[36];
@@ -298,78 +295,4 @@ public class Lab3Fragment extends Fragment {
         return names;
     }
 
-    private void lab3Initilize() {
-
-        Kinside kinside = new Kinside(vectorTo2DArray());
-
-        kinside.firstStep();
-
-        ArrayList<double[][]> listG = kinside.secondStep();
-        if (listG != null) {
-            thirdStep(listG.get(0), listG.get(1), listG.get(2));
-        }
-    }
-
-    private CheckBox[][] listToMatrixCheckbox() {
-        CheckBox[][] matrixOfCheckBoxes = new CheckBox[6][6];
-        for (int ind = 0; ind < checkBoxes.size(); ind++) {
-
-            int vecIndex = 0;
-            for (int i = 0; i < 6; i++) {
-                for (int j = 0; j < 6; j++) {
-                    matrixOfCheckBoxes[i][j] = checkBoxes.get(vecIndex);
-                    vecIndex++;
-                }
-            }
-        }
-        Log.d("classes", matrixOfCheckBoxes.toString());
-        return matrixOfCheckBoxes;
-    }
-
-    public void thirdStep(double[][] newG1, double[][] newG2, double[][] newG3) {
-
-        matrixOfCheckBoxes = listToMatrixCheckbox();
-
-        if (spinnerClusters.getSelectedItemPosition() == 0) {
-            for (int i = 0; i < 6; i++) {
-                for (int j = 0; j < 6; j++) {
-                    if (newG1[i][j] != 0) {
-                        int color = Color.argb(255 - (int) (20 * newG1[i][j]), 255 - (int) (20 * newG1[i][j]), 255 - (int) (20 * newG1[i][j]), 255 - (int) (20 * newG1[i][j]));
-                        matrixOfCheckBoxes[i][j].setBackgroundColor(color);
-
-                    } else {
-                        int color = Color.argb(255, 255, 255, 255);
-                        matrixOfCheckBoxes[i][j].setBackgroundColor(color);
-                    }
-                }
-            }
-        } else if (spinnerClusters.getSelectedItemPosition() == 1) {
-            for (int i = 0; i < 6; i++) {
-                for (int j = 0; j < 6; j++) {
-                    if (newG2[i][j] != 0) {
-                        int color = Color.argb(255 - (int) (20 * newG2[i][j]), 255 - (int) (20 * newG2[i][j]), 255 - (int) (20 * newG2[i][j]), 255 - (int) (20 * newG2[i][j]));
-                        matrixOfCheckBoxes[i][j].setBackgroundColor(color);
-
-                    } else {
-                        int color = Color.argb(255, 255, 255, 255);
-                        matrixOfCheckBoxes[i][j].setBackgroundColor(color);
-                    }
-                }
-            }
-        } else {
-            for (int i = 0; i < 6; i++) {
-                for (int j = 0; j < 6; j++) {
-                    if (newG3[i][j] != 0) {
-                        int color = Color.argb(255 - (int) (20 * newG3[i][j]), 255 - (int) (20 * newG3[i][j]), 255 - (int) (20 * newG3[i][j]), 255 - (int) (20 * newG3[i][j]));
-                        matrixOfCheckBoxes[i][j].setBackgroundColor(color);
-
-                    } else {
-                        int color = Color.argb(255, 255, 255, 255);
-                        matrixOfCheckBoxes[i][j].setBackgroundColor(color);
-                    }
-                }
-            }
-        }
-
-    }
 }

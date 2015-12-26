@@ -8,6 +8,9 @@
         <item
             android:id="@+id/item_navDrawer_lab3"
             android:title="Lab 3" />
+        <item
+            android:id="@+id/item_navDrawer_lab4"
+            android:title="Lab 4" />
     </group>
 
 
